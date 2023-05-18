@@ -1,0 +1,45 @@
+{
+  "name": "Chrome Extension with react in popup and content script",
+  "description": "This project will help you to save time in creating the entire project in react",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Starters Project",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "all_frames": false,
+    "run_at": "document_start"
+  }],
+  "web_accessible_resources": [{
+    "resources": [
+      "content.js",
+      "background.js",
+      "contentScriptInReact.html",
+      "contentScriptInReact.js"
+    ],
+    "matches": ["*://*/*"]
+  }]
+}

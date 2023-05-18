@@ -1,0 +1,1 @@
+console.log('In Content Script 2');
